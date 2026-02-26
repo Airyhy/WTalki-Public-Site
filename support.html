@@ -5,44 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WTalkie - Support</title>
     <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --accent: #2f81f7; --text: #f0f6fc; --text-secondary: #8b949e; --border: #30363d; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1d1d1f; line-height: 1.6; }
-        .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-        h2 { font-size: 1.3rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
-        p { margin-bottom: 16px; color: #333; }
-        a { color: #007AFF; text-decoration: none; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 100px 24px 60px; }
+        a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .back { display: inline-block; margin-bottom: 24px; font-size: 0.9rem; }
-        footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid #e5e5e5; color: #999; font-size: 0.85rem; }
+        .back { display: inline-block; margin-bottom: 32px; font-size: 0.9rem; color: var(--text-secondary); }
+        .back:hover { color: var(--text); }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 36px; margin-bottom: 10px; }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; }
+        .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+        footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
+        footer a { color: var(--text-secondary); margin: 0 16px; font-size: 0.9rem; }
+        footer .copy { font-size: 0.8rem; color: #484f58; margin-top: 12px; }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back">&larr; Back to WTalkie</a>
         <h1>Support</h1>
+        <p>Need help? We're here for you.</p>
 
-        <h2>Contact Us</h2>
-        <p>If you have questions, feedback, or need help with WTalkie, please reach out:</p>
-        <p>Email: <a href="mailto:airyhy@gmail.com">airyhy@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/Airyhy/WTalkie/issues">Report an issue</a></p>
-
-        <h2>Frequently Asked Questions</h2>
+        <div class="card">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:airyhy@gmail.com">airyhy@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Airyhy/WTalkie/issues">Report an issue</a></p>
+        </div>
 
         <h2>How do I use voice commands?</h2>
         <p>Tap the sparkles button on the Today tab, then speak or type your command. For example: "Help me design a leg workout" or "Add barbell bench press."</p>
 
         <h2>How do I add a new exercise?</h2>
-        <p>Go to Profile &rarr; My Movements &rarr; tap the + button. You can set the name, category, and tracking type (reps + weight, reps only, or time-based).</p>
+        <p>Go to Profile &rarr; My Movements &rarr; tap the + button. Set the name, category, and tracking type.</p>
 
         <h2>Is my data backed up?</h2>
-        <p>Yes. WTalkie syncs your data to the cloud via your Google or Apple account. Your workouts, movements, and profile are automatically saved.</p>
+        <p>Yes. WTalkie syncs your data to the cloud via your Google or Apple account automatically.</p>
 
         <h2>How do I change my weight unit?</h2>
-        <p>Go to Profile &rarr; Personal Info. You can toggle between lbs and kg next to the weight field.</p>
+        <p>Go to Profile &rarr; Personal Info. Toggle between lbs and kg next to the weight field.</p>
 
         <footer>
-            <p>&copy; 2025 Haoyang Yuan. All rights reserved.</p>
+            <div><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a></div>
+            <div class="copy">&copy; 2025 Haoyang Yuan. All rights reserved.</div>
         </footer>
     </div>
 </body>
