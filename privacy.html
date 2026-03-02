@@ -29,7 +29,7 @@
     <div class="container">
         <a href="index.html" class="back">&larr; Back to WTalkie</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: February 25, 2026</p>
+        <p class="updated">Last updated: March 1, 2026</p>
 
         <h2>Overview</h2>
         <p>WTalkie ("the App") is a voice-powered gym workout tracker. Your privacy is important to us. This policy explains what data we collect, how we use it, and your rights.</p>
@@ -39,25 +39,36 @@
             <li><strong>Account information:</strong> Name, email, and profile photo from your Google or Apple sign-in.</li>
             <li><strong>Workout data:</strong> Exercises, sets, reps, weights, and sessions you log.</li>
             <li><strong>Profile data:</strong> Age, gender, weight, height, and gym preferences you optionally provide.</li>
-            <li><strong>Voice data:</strong> Audio is processed for voice commands via OpenAI Whisper and is not stored permanently.</li>
+            <li><strong>Voice data:</strong> Audio is processed for voice commands via OpenAI Whisper and is not stored permanently by WTalkie or OpenAI.</li>
         </ul>
+
+        <h2>AI Features &amp; Data Disclosure</h2>
+        <p>WTalkie uses AI-powered features to help you plan and log workouts. When you use these features, the following data may be sent to third-party AI services:</p>
+        <ul>
+            <li><strong>Voice recordings:</strong> When you use the voice assistant, audio is sent to OpenAI's Whisper API for transcription. Audio is processed in real time and is not stored permanently by OpenAI or WTalkie.</li>
+            <li><strong>Workout context:</strong> To provide personalized suggestions, the AI assistant receives your current workout state, exercise names, recent workout history (up to 30 days), gym information, and basic profile data (age, gender, weight). This data is sent to OpenAI's ChatGPT API.</li>
+            <li><strong>Text input:</strong> Any text you type to the AI assistant is sent to OpenAI for processing.</li>
+        </ul>
+        <p>OpenAI's API data usage policy states that data sent via the API is not used to train their models. For details, see <a href="https://openai.com/policies/api-data-usage-policies">OpenAI's API Data Usage Policies</a>.</p>
+        <p>All AI features require explicit user action (tapping the microphone or sending a message). The app never sends data to AI services in the background or without your knowledge.</p>
 
         <h2>How We Use Your Data</h2>
         <ul>
             <li>To provide and improve the App's features</li>
             <li>To sync your data across devices via Firebase</li>
-            <li>To process voice commands via AI services</li>
+            <li>To process voice commands and AI assistant requests via OpenAI</li>
+            <li>To personalize workout suggestions based on your history and preferences</li>
         </ul>
 
         <h2>Third-Party Services</h2>
         <ul>
             <li><strong>Firebase (Google):</strong> Authentication and cloud storage. <a href="https://firebase.google.com/support/privacy">Privacy Policy</a></li>
-            <li><strong>OpenAI:</strong> Voice transcription and AI assistant. <a href="https://openai.com/privacy">Privacy Policy</a></li>
+            <li><strong>OpenAI:</strong> Voice transcription (Whisper API) and AI assistant (ChatGPT API). <a href="https://openai.com/privacy">Privacy Policy</a> &middot; <a href="https://openai.com/policies/api-data-usage-policies">API Data Policy</a></li>
             <li><strong>Apple:</strong> Sign in with Apple. <a href="https://www.apple.com/privacy/">Privacy Policy</a></li>
         </ul>
 
-        <h2>Data Storage & Security</h2>
-        <p>Your data is stored in Google Firebase servers and transmitted securely using HTTPS encryption.</p>
+        <h2>Data Storage &amp; Security</h2>
+        <p>Your data is stored in Google Firebase servers and transmitted securely using HTTPS encryption. Voice audio and AI requests are transmitted over encrypted connections and are not stored permanently after processing.</p>
 
         <h2>Data Retention</h2>
         <p>Data is retained while your account is active. Delete your account and all cloud data anytime from Profile &rarr; Delete Account.</p>
@@ -76,11 +87,11 @@
         <p>We may update this policy from time to time. Changes will be posted on this page.</p>
 
         <h2>Contact</h2>
-        <p>Questions? <a href="https://github.com/Airyhy/WTalki-Public-Site/issues">Open an issue on GitHub</a>.</p>
+        <p>Questions? <a href="https://github.com/Airyhy/WTalki-Public-Site/issues">Open an issue on GitHub</a> or email <a href="mailto:airyhy@gmail.com">airyhy@gmail.com</a>.</p>
 
         <footer>
             <div><a href="index.html">Home</a><a href="support.html">Support</a></div>
-            <div class="copy">&copy; 2025 WTalkie. All rights reserved.</div>
+            <div class="copy">&copy; 2026 WTalkie. All rights reserved.</div>
         </footer>
     </div>
 </body>
