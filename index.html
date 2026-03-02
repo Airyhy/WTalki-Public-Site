@@ -3,383 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WTalkie - Your Gym Buddy Who Listens</title>
+    <title>WTalkie — Talk to Your Workout</title>
     <style>
         :root {
-            --bg: #0d1117;
-            --bg-card: #161b22;
-            --accent: #2f81f7;
-            --accent-glow: rgba(47, 129, 247, 0.15);
-            --green: #3fb950;
-            --text: #f0f6fc;
-            --text-secondary: #8b949e;
-            --border: #30363d;
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --accent: #007AFF;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --border: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
             background: var(--bg); color: var(--text);
-            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            line-height: 1.5; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* NAV */
         nav {
             position: fixed; top: 0; width: 100%;
-            padding: 20px 32px;
+            padding: 16px 32px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
             z-index: 100; border-bottom: 1px solid var(--border);
         }
-        .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-        .logo span { color: var(--accent); }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
         .nav-links a {
             color: var(--text-secondary); text-decoration: none;
-            font-size: 0.9rem; margin-left: 28px; transition: color 0.2s;
+            font-size: 0.875rem; font-weight: 500; margin-left: 28px; transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--text); }
 
         /* HERO */
         .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
+            min-height: 90vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            padding: 120px 24px 80px; position: relative; overflow: hidden;
+            padding: 140px 24px 80px;
         }
-        .hero::before {
-            content: ''; position: absolute; top: -50%; left: 50%;
-            transform: translateX(-50%); width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .mic-icon {
-            width: 80px; height: 80px; border-radius: 24px;
-            background: linear-gradient(135deg, var(--accent), #1a6ddb);
+        .app-icon {
+            width: 72px; height: 72px; border-radius: 16px;
+            background: var(--accent);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 32px rgba(47, 129, 247, 0.3);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
-        .mic-icon svg { width: 40px; height: 40px; fill: white; }
+        .app-icon svg { width: 36px; height: 36px; fill: white; }
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800;
-            letter-spacing: -0.03em; line-height: 1.1;
-            margin-bottom: 20px; max-width: 700px;
-        }
-        .highlight {
-            background: linear-gradient(135deg, var(--accent), #58a6ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700;
+            letter-spacing: -0.025em; line-height: 1.1;
+            margin-bottom: 16px; max-width: 640px;
         }
         .hero .subtitle {
-            font-size: 1.2rem; color: var(--text-secondary);
-            max-width: 540px; margin-bottom: 40px; line-height: 1.7;
+            font-size: 1.125rem; color: var(--text-secondary);
+            max-width: 480px; margin-bottom: 36px; line-height: 1.6;
+            font-weight: 400;
         }
-        .cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .cta-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .btn {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px; border-radius: 12px; font-size: 1rem;
+            padding: 12px 24px; border-radius: 980px; font-size: 0.9375rem;
             font-weight: 600; text-decoration: none; transition: all 0.2s;
             cursor: pointer; border: none;
         }
         .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover {
-            background: #388bfd;
-            box-shadow: 0 4px 20px rgba(47, 129, 247, 0.4);
-            transform: translateY(-1px);
-        }
+        .btn-primary:hover { background: #0066d6; transform: scale(1.02); }
         .btn-secondary {
-            background: var(--bg-card); color: var(--text);
-            border: 1px solid var(--border);
+            background: transparent; color: var(--accent);
+            border: 1.5px solid var(--accent);
         }
-        .btn-secondary:hover { border-color: var(--text-secondary); transform: translateY(-1px); }
+        .btn-secondary:hover { background: rgba(0, 122, 255, 0.06); }
 
         /* CONVERSATION DEMO */
         .conversation {
-            margin-top: 64px; max-width: 520px; width: 100%;
-            display: flex; flex-direction: column; gap: 16px;
+            margin-top: 56px; max-width: 440px; width: 100%;
+            display: flex; flex-direction: column; gap: 10px;
         }
         .msg {
-            padding: 16px 20px; border-radius: 16px;
-            font-size: 1rem; line-height: 1.5; max-width: 85%;
+            padding: 12px 16px; border-radius: 18px;
+            font-size: 0.9375rem; line-height: 1.45; max-width: 82%;
         }
         .msg-user {
             background: var(--accent); color: white;
             align-self: flex-end; border-bottom-right-radius: 4px;
         }
         .msg-ai {
-            background: var(--bg-card); border: 1px solid var(--border);
+            background: var(--bg-secondary);
             color: var(--text); align-self: flex-start;
             border-bottom-left-radius: 4px;
         }
-        .msg-label {
-            font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.08em; font-weight: 600;
-            margin-bottom: 4px; opacity: 0.6;
-        }
 
-        /* CONCEPT SECTION */
-        .concept {
-            padding: 120px 24px; max-width: 800px; margin: 0 auto;
-            text-align: center;
+        /* SECTIONS */
+        .section {
+            padding: 100px 24px; max-width: 880px; margin: 0 auto;
         }
+        .section-center { text-align: center; }
         .section-label {
-            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--accent); font-weight: 600; margin-bottom: 12px;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--accent); font-weight: 600; margin-bottom: 8px;
         }
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;
-            margin-bottom: 20px; letter-spacing: -0.02em;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700;
+            margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.15;
         }
         .section-desc {
-            font-size: 1.1rem; color: var(--text-secondary);
-            max-width: 600px; margin: 0 auto 60px; line-height: 1.7;
+            font-size: 1.0625rem; color: var(--text-secondary);
+            max-width: 560px; margin: 0 auto 56px; line-height: 1.6;
         }
 
-        /* PILLARS */
-        .pillars {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+        /* FEATURE CARDS */
+        .features {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
             text-align: left;
         }
-        .pillar {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 16px; padding: 32px 28px; transition: all 0.25s;
+        .feature-card {
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px 24px;
+            box-shadow: var(--card-shadow);
+            transition: box-shadow 0.25s, transform 0.25s;
         }
-        .pillar:hover {
-            border-color: var(--accent); transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        .feature-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
         }
-        .pillar-quote {
-            font-size: 1.05rem; font-style: italic;
-            color: var(--text); margin-bottom: 16px; line-height: 1.5;
+        .feature-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: rgba(0, 122, 255, 0.08);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px; font-size: 1.25rem;
         }
-        .pillar-quote::before { content: '\201C'; color: var(--accent); }
-        .pillar-quote::after { content: '\201D'; color: var(--accent); }
-        .pillar-desc {
-            font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;
+        .feature-card h3 {
+            font-size: 1rem; font-weight: 600; margin-bottom: 6px;
+        }
+        .feature-card p {
+            font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;
         }
 
-        /* FLOW */
-        .flow {
-            padding: 100px 24px; max-width: 700px; margin: 0 auto;
+        /* HOW IT WORKS */
+        .steps {
+            display: flex; flex-direction: column; gap: 40px; margin-top: 20px;
         }
-        .flow-items {
-            display: flex; flex-direction: column; gap: 48px; margin-top: 20px;
+        .step { display: flex; align-items: flex-start; gap: 20px; }
+        .step-num {
+            min-width: 32px; height: 32px; border-radius: 50%;
+            background: var(--accent); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8125rem; font-weight: 700; margin-top: 2px;
         }
-        .flow-item { display: flex; align-items: flex-start; gap: 24px; }
-        .flow-dot {
-            min-width: 12px; height: 12px; border-radius: 50%;
-            background: var(--accent); margin-top: 8px;
-            box-shadow: 0 0 12px rgba(47, 129, 247, 0.4);
-        }
-        .flow-item h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
-        .flow-item p { color: var(--text-secondary); font-size: 0.95rem; }
+        .step h3 { font-size: 1.0625rem; font-weight: 600; margin-bottom: 4px; }
+        .step p { color: var(--text-secondary); font-size: 0.9375rem; }
 
-        /* SECOND CONVERSATION */
+        /* DEMO SECTIONS */
         .demo-section {
-            padding: 100px 24px; max-width: 800px; margin: 0 auto;
+            padding: 80px 24px; max-width: 880px; margin: 0 auto;
             text-align: center;
         }
         .demo-conversation {
-            margin: 40px auto 0; max-width: 520px;
-            display: flex; flex-direction: column; gap: 16px;
+            margin: 32px auto 0; max-width: 440px;
+            display: flex; flex-direction: column; gap: 10px;
         }
+
+        /* SEPARATOR */
+        .bg-alt { background: var(--bg-secondary); }
 
         /* CTA */
         .cta-section {
-            padding: 120px 24px; text-align: center;
+            padding: 100px 24px; text-align: center;
         }
         .cta-section h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;
-            margin-bottom: 16px; letter-spacing: -0.02em;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700;
+            margin-bottom: 12px; letter-spacing: -0.02em;
         }
-        .cta-section p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 32px; }
+        .cta-section p { color: var(--text-secondary); font-size: 1.0625rem; margin-bottom: 28px; }
 
         /* FOOTER */
         footer {
-            padding: 40px 24px; border-top: 1px solid var(--border); text-align: center;
+            padding: 32px 24px; border-top: 1px solid var(--border); text-align: center;
         }
-        footer .links { margin-bottom: 16px; }
+        footer .links { margin-bottom: 12px; }
         footer .links a {
             color: var(--text-secondary); text-decoration: none;
-            margin: 0 16px; font-size: 0.9rem; transition: color 0.2s;
+            margin: 0 14px; font-size: 0.8125rem; font-weight: 500; transition: color 0.2s;
         }
         footer .links a:hover { color: var(--text); }
-        footer .copy { font-size: 0.8rem; color: #484f58; }
+        footer .copy { font-size: 0.75rem; color: var(--text-secondary); }
 
         @media (max-width: 768px) {
-            nav { padding: 16px 20px; }
-            .nav-links a { margin-left: 16px; font-size: 0.85rem; }
-            .pillars { grid-template-columns: 1fr; }
-            .flow-item { flex-direction: column; gap: 12px; }
-            .hero { padding: 100px 20px 60px; }
-            .msg { max-width: 95%; }
+            nav { padding: 14px 20px; }
+            .nav-links a { margin-left: 16px; }
+            .features { grid-template-columns: 1fr; }
+            .step { flex-direction: column; gap: 10px; }
+            .hero { padding: 120px 20px 60px; }
+            .msg { max-width: 92%; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">W<span>Talkie</span></div>
+        <div class="logo">WTalkie</div>
         <div class="nav-links">
-            <a href="#concept">About</a>
+            <a href="#features">Features</a>
             <a href="support.html">Support</a>
             <a href="privacy.html">Privacy</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="mic-icon">
+        <div class="app-icon">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5z"/>
                 <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
             </svg>
         </div>
-        <h1>A gym buddy who <span class="highlight">actually listens</span></h1>
-        <p class="subtitle">Just talk. WTalkie hears what you need, plans your workout, logs every set, and remembers everything — so you can focus on lifting.</p>
+        <h1>Talk to your workout.</h1>
+        <p class="subtitle">WTalkie is a voice-powered gym tracker. Speak naturally to plan workouts, log sets, and track progress — hands-free.</p>
         <div class="cta-group">
             <a href="#" class="btn btn-primary">Coming to App Store</a>
-            <a href="#concept" class="btn btn-secondary">Learn More</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
         </div>
 
         <div class="conversation">
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                I want a heavy leg day today
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Got it. I'll set up Barbell Back Squat, Romanian Deadlift, Leg Press, and Walking Lunges. Sound good?
-            </div>
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                Yeah, let's go
-            </div>
+            <div class="msg msg-user">I want a heavy leg day today</div>
+            <div class="msg msg-ai">I'll set up Barbell Back Squat, Romanian Deadlift, Leg Press, and Walking Lunges. Sound good?</div>
+            <div class="msg msg-user">Yeah, let's go</div>
         </div>
     </section>
 
-    <section class="concept" id="concept">
-        <div class="section-label">The Idea</div>
-        <h2 class="section-title">You talk. WTalkie handles the rest.</h2>
-        <p class="section-desc">No screens to tap between sets. No menus to scroll through while catching your breath. Just say what you need — like talking to someone who knows your routine, your gym, and your goals.</p>
+    <div class="bg-alt">
+    <section class="section section-center" id="features">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+        <p class="section-desc">WTalkie stays out of your way until you need it. Just speak, and it handles the rest.</p>
 
-        <div class="pillars">
-            <div class="pillar">
-                <div class="pillar-quote">Design me a push day</div>
-                <div class="pillar-desc">Tell WTalkie what kind of workout you want. It knows your equipment, your history, and what works for you.</div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎙</div>
+                <h3>Voice-first logging</h3>
+                <p>Speak naturally to add exercises, log sets, and finish workouts. No tapping between sets.</p>
             </div>
-            <div class="pillar">
-                <div class="pillar-quote">I just finished five sets of bench</div>
-                <div class="pillar-desc">Log as you go, hands-free. WTalkie records your sets, reps, and weight without you touching the screen.</div>
+            <div class="feature-card">
+                <div class="feature-icon">🏋️</div>
+                <h3>Smart workout design</h3>
+                <p>Tell WTalkie what kind of workout you want. It knows your equipment, history, and preferences.</p>
             </div>
-            <div class="pillar">
-                <div class="pillar-quote">How's my squat been lately?</div>
-                <div class="pillar-desc">Ask about your progress anytime. WTalkie remembers every session and shows you where you stand.</div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Progress tracking</h3>
+                <p>Every session is saved. View trends, personal records, and workout history at a glance.</p>
             </div>
         </div>
     </section>
+    </div>
 
-    <section class="flow">
-        <div class="section-label">How It Works</div>
-        <h2 class="section-title" style="text-align:center;">Like texting a coach who never sleeps.</h2>
-        <div class="flow-items">
-            <div class="flow-item">
-                <div class="flow-dot"></div>
+    <section class="section">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title" style="text-align:center;">Simple by design.</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
                 <div>
-                    <h3>You speak, it understands</h3>
-                    <p>Natural language, not commands. Say "add bench press" or "I'm done for today" — WTalkie gets it.</p>
+                    <h3>You speak naturally</h3>
+                    <p>No commands to memorize. Say "add bench press" or "I'm done for today" — WTalkie understands.</p>
                 </div>
             </div>
-            <div class="flow-item">
-                <div class="flow-dot"></div>
+            <div class="step">
+                <div class="step-num">2</div>
                 <div>
                     <h3>It confirms before acting</h3>
-                    <p>Nothing happens without your OK. WTalkie always tells you what it's about to do and waits for a yes.</p>
+                    <p>Nothing changes without your OK. WTalkie shows what it's about to do and waits for your approval.</p>
                 </div>
             </div>
-            <div class="flow-item">
-                <div class="flow-dot"></div>
+            <div class="step">
+                <div class="step-num">3</div>
                 <div>
-                    <h3>Everything is remembered</h3>
-                    <p>Every workout, every set, every personal record — synced to the cloud, tracked over time, always there when you need it.</p>
+                    <h3>Everything syncs to the cloud</h3>
+                    <p>Workouts, progress, personal records — all saved automatically and available across your devices.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="bg-alt">
     <section class="demo-section">
-        <div class="section-label">Mid-Workout</div>
-        <h2 class="section-title">It stays with you through the session.</h2>
+        <div class="section-label">Mid-workout</div>
+        <h2 class="section-title">Adapts as you go.</h2>
         <div class="demo-conversation">
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                Actually, swap leg press for hack squat
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Done. Replaced Leg Press with Hack Squat. Your workout is updated.
-            </div>
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                Save everything, I'm finished
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Saved! 4 exercises, 16 sets total. Great session — your squat is up 10 lbs from last week.
-            </div>
+            <div class="msg msg-user">Actually, swap leg press for hack squat</div>
+            <div class="msg msg-ai">Done. Replaced Leg Press with Hack Squat. Your workout is updated.</div>
+            <div class="msg msg-user">Save everything, I'm finished</div>
+            <div class="msg msg-ai">Saved! 4 exercises, 16 sets. Your squat is up 10 lbs from last week.</div>
+        </div>
+    </section>
+    </div>
+
+    <section class="demo-section">
+        <div class="section-label">Any situation</div>
+        <h2 class="section-title">Works wherever you train.</h2>
+        <div class="demo-conversation">
+            <div class="msg msg-user">This gym doesn't have a bench, what should I do?</div>
+            <div class="msg msg-ai">I'll swap Barbell Bench for Dumbbell Floor Press and add Push-Ups as a finisher. Want me to update?</div>
         </div>
     </section>
 
-    <section class="demo-section">
-        <div class="section-label">Adapts to You</div>
-        <h2 class="section-title">Different day, different situation — same buddy.</h2>
-        <div class="demo-conversation">
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                This gym doesn't have a bench, what should I do?
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                No worries. I'll swap Barbell Bench for Dumbbell Floor Press and add Push-Ups as a finisher. Want me to update the workout?
-            </div>
-        </div>
-    </section>
-
+    <div class="bg-alt">
     <section class="demo-section">
         <div class="demo-conversation">
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                I'm at home and want to do some cardio
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Got it — no equipment needed. How about 30 min of Jump Rope, Burpees, Mountain Climbers, and High Knees? I'll set up intervals for you.
-            </div>
+            <div class="msg msg-user">I did 4 sets of bench at 185, then 3 sets of incline dumbbell at 65</div>
+            <div class="msg msg-ai">Logged! Bench Press — 4 sets at 185 lbs. Incline Dumbbell Press — 3 sets at 65 lbs. Anything else?</div>
         </div>
     </section>
-
-    <section class="demo-section">
-        <div class="demo-conversation">
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                Hey, I just finished my workout. Help me log it
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Sure! What did you do today? Just tell me the exercises and I'll log the sets for you.
-            </div>
-            <div class="msg msg-user">
-                <div class="msg-label">You</div>
-                I did 4 sets of bench at 185, then 3 sets of incline dumbbell at 65
-            </div>
-            <div class="msg msg-ai">
-                <div class="msg-label">WTalkie</div>
-                Logged! Bench Press — 4 sets at 185 lbs. Incline Dumbbell Press — 3 sets at 65 lbs. Anything else to add?
-            </div>
-        </div>
-    </section>
+    </div>
 
     <section class="cta-section">
-        <h2>Your workout deserves someone who listens.</h2>
+        <h2>Your workout, your voice.</h2>
         <p>WTalkie is coming soon to the App Store.</p>
         <a href="#" class="btn btn-primary">Coming to App Store</a>
     </section>

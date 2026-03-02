@@ -3,33 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WTalkie - Support</title>
+    <title>WTalkie — Support</title>
     <style>
-        :root { --bg: #0d1117; --bg-card: #161b22; --accent: #2f81f7; --text: #f0f6fc; --text-secondary: #8b949e; --border: #30363d; }
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --accent: #007AFF;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 720px; margin: 0 auto; padding: 100px 24px 60px; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.5; -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 680px; margin: 0 auto; padding: 100px 24px 60px; }
+
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .back { display: inline-block; margin-bottom: 32px; font-size: 0.9rem; color: var(--text-secondary); }
-        .back:hover { color: var(--text); }
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
-        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 36px; margin-bottom: 10px; }
-        p { margin-bottom: 16px; color: var(--text-secondary); }
-        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; }
-        .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-        footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
-        footer a { color: var(--text-secondary); margin: 0 16px; font-size: 0.9rem; }
-        footer .copy { font-size: 0.8rem; color: #484f58; margin-top: 12px; }
+
+        .back {
+            display: inline-flex; align-items: center; gap: 4px;
+            margin-bottom: 32px; font-size: 0.875rem; font-weight: 500;
+            color: var(--accent);
+        }
+        .back:hover { text-decoration: none; opacity: 0.8; }
+
+        h1 {
+            font-size: 2rem; font-weight: 700; margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+        .lead { font-size: 1.0625rem; color: var(--text-secondary); margin-bottom: 32px; }
+
+        .contact-card {
+            background: var(--bg-secondary); border-radius: 12px;
+            padding: 20px 24px; margin-bottom: 40px;
+        }
+        .contact-card h3 {
+            font-size: 0.9375rem; font-weight: 600; margin-bottom: 6px;
+        }
+        .contact-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; }
+
+        h2 {
+            font-size: 1.0625rem; font-weight: 600;
+            margin-top: 32px; margin-bottom: 8px;
+        }
+        p {
+            font-size: 0.9375rem; color: var(--text-secondary);
+            margin-bottom: 20px; line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 80px; padding-top: 20px;
+            border-top: 1px solid var(--border); text-align: center;
+        }
+        footer a {
+            color: var(--text-secondary); margin: 0 14px;
+            font-size: 0.8125rem; font-weight: 500;
+        }
+        footer .copy {
+            font-size: 0.75rem; color: var(--text-secondary);
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back">&larr; Back to WTalkie</a>
+        <a href="index.html" class="back">&larr; WTalkie</a>
         <h1>Support</h1>
-        <p>Need help? We're here for you.</p>
+        <p class="lead">Need help? We're here for you.</p>
 
-        <div class="card">
+        <div class="contact-card">
             <h3>Contact</h3>
             <p>GitHub: <a href="https://github.com/Airyhy/WTalki-Public-Site/issues">Report an issue</a></p>
         </div>
