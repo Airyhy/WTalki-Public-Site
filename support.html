@@ -40,14 +40,24 @@
         }
         .lead { font-size: 1.0625rem; color: var(--text-secondary); margin-bottom: 32px; }
 
+        .contact-cards {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 520px) {
+            .contact-cards { grid-template-columns: 1fr; }
+        }
         .contact-card {
             background: var(--bg-secondary); border-radius: 12px;
-            padding: 20px 24px; margin-bottom: 40px;
+            padding: 20px 24px;
         }
         .contact-card h3 {
             font-size: 0.9375rem; font-weight: 600; margin-bottom: 6px;
         }
         .contact-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; }
+        .contact-card .icon {
+            font-size: 1.5rem; margin-bottom: 8px;
+        }
 
         h2 {
             font-size: 1.0625rem; font-weight: 600;
@@ -56,6 +66,11 @@
         p {
             font-size: 0.9375rem; color: var(--text-secondary);
             margin-bottom: 20px; line-height: 1.6;
+        }
+
+        .divider {
+            border: none; border-top: 1px solid var(--border);
+            margin: 40px 0;
         }
 
         footer {
@@ -76,27 +91,46 @@
     <div class="container">
         <a href="index.html" class="back">&larr; WTalkie</a>
         <h1>Support</h1>
-        <p class="lead">Need help? We're here for you.</p>
+        <p class="lead">WTalkie is your workout companion &mdash; not a tracker. You exercise, you talk, and we listen. That's how it should be.</p>
 
-        <div class="contact-card">
-            <h3>Contact</h3>
-            <p>GitHub: <a href="https://github.com/Airyhy/WTalki-Public-Site/issues">Report an issue</a></p>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="icon">💬</div>
+                <h3>In-App Feedback</h3>
+                <p>Open WTalkie &rarr; Profile &rarr; Send Feedback. Tell us what's on your mind, right from your workout.</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon">🐛</div>
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/Airyhy/WTalki-Public-Site/issues">Report an issue</a> on GitHub if you run into a bug or want to request a feature.</p>
+            </div>
         </div>
 
-        <h2>How do I use voice commands?</h2>
-        <p>Tap the sparkles button on the Today tab, then speak or type your command. For example: "Help me design a leg workout" or "Add barbell bench press."</p>
+        <hr class="divider">
+
+        <h2>What is WTalkie?</h2>
+        <p>WTalkie is a workout companion. It doesn't control your workout &mdash; you do. We handle the tedious parts (planning, logging, looking up history) so you can focus on training. Just listen and speak. That's the most natural way a human should interact with their tools.</p>
+
+        <h2>How do I talk to WTalkie?</h2>
+        <p>Tap the sparkles button on the Today tab, then speak or type. For example: "Help me design a leg workout" or "Add bench press." WTalkie listens, understands, and asks you to confirm before making any changes.</p>
+
+        <h2>What about the exercise library?</h2>
+        <p>WTalkie comes with 250+ exercises across 8 categories to get you started &mdash; but they're just a starting point. You can create your own exercises for any program or goal. For example, you might have "Bench Press" set up for a Madcow 5&times;5 strength program and a separate "Bench Press (Endurance)" for a lighter, higher-rep plan. Same movement, different intent &mdash; your library, your rules.</p>
 
         <h2>How do I add a new exercise?</h2>
-        <p>Go to the Exercises tab and tap the + button in the top right. Set the name, category, and tracking type (reps + weight, reps only, or time-based).</p>
+        <p>Go to the Exercises tab and tap the + button. Set the name, category, and tracking type (reps + weight, reps only, or time-based). Or just tell the AI &mdash; "Add a new exercise called hip thrust."</p>
 
-        <h2>Is my data backed up?</h2>
-        <p>Yes. WTalkie syncs your data to the cloud via your Google or Apple account automatically.</p>
+        <h2>Is my data safe?</h2>
+        <p>Yes. WTalkie syncs your data to the cloud via your Google or Apple account automatically. Your workouts, exercises, and gyms travel with you.</p>
 
         <h2>How do I change my weight unit?</h2>
-        <p>Go to the Profile tab &rarr; Personal Info section. Use the Unit picker to switch between Pounds (lbs) and Kilograms (kg).</p>
+        <p>Go to Profile &rarr; Personal Info. Use the Unit picker to switch between Pounds (lbs) and Kilograms (kg).</p>
 
         <h2>Does WTalkie use AI?</h2>
-        <p>Yes. WTalkie includes an AI assistant that can help design workouts, add exercises, and answer questions about your progress. Voice input is transcribed using OpenAI Whisper, and the assistant uses ChatGPT to understand your requests. All AI actions require your explicit confirmation before any changes are made. See our <a href="privacy.html">Privacy Policy</a> for details on how AI data is handled.</p>
+        <p>Yes. WTalkie includes an AI assistant that helps design workouts, add exercises, and answer questions about your progress. Voice input is transcribed using OpenAI Whisper, and the assistant uses ChatGPT to understand your requests. Every action requires your confirmation first &mdash; the AI never changes anything without your say-so. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+
+        <h2>Can I use WTalkie without AI?</h2>
+        <p>Absolutely. The core experience &mdash; workout tracking, exercise library, history, progress charts &mdash; works fully without AI. The AI is there when you need it, invisible when you don't.</p>
 
         <footer>
             <div><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a></div>
